@@ -1,61 +1,154 @@
-<p align="center"><a href="https://laravel.com" target="_blank"><img src="https://raw.githubusercontent.com/laravel/art/master/logo-lockup/5%20SVG/2%20CMYK/1%20Full%20Color/laravel-logolockup-cmyk-red.svg" width="400" alt="Laravel Logo"></a></p>
+# FANBook
 
-<p align="center">
-<a href="https://github.com/laravel/framework/actions"><img src="https://github.com/laravel/framework/workflows/tests/badge.svg" alt="Build Status"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/dt/laravel/framework" alt="Total Downloads"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/v/laravel/framework" alt="Latest Stable Version"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/l/laravel/framework" alt="License"></a>
-</p>
+FANBook adalah aplikasi web berbasis Laravel untuk berbagi dan mencari buku secara publik, lengkap dengan fitur autentikasi, manajemen buku, filter, dan rating.
 
-## About Laravel
+---
 
-Laravel is a web application framework with expressive, elegant syntax. We believe development must be an enjoyable and creative experience to be truly fulfilling. Laravel takes the pain out of development by easing common tasks used in many web projects, such as:
+## ✨ Fitur Utama
 
-- [Simple, fast routing engine](https://laravel.com/docs/routing).
-- [Powerful dependency injection container](https://laravel.com/docs/container).
-- Multiple back-ends for [session](https://laravel.com/docs/session) and [cache](https://laravel.com/docs/cache) storage.
-- Expressive, intuitive [database ORM](https://laravel.com/docs/eloquent).
-- Database agnostic [schema migrations](https://laravel.com/docs/migrations).
-- [Robust background job processing](https://laravel.com/docs/queues).
-- [Real-time event broadcasting](https://laravel.com/docs/broadcasting).
+- **Autentikasi Pengguna**  
+  Register, login, verifikasi email, dan manajemen profil.
+- **Manajemen Buku**  
+  CRUD buku (tambah, edit, hapus), upload thumbnail, rating, dan filter berdasarkan penulis/rating.
+- **Dashboard & Daftar Buku Publik**  
+  Landing page menampilkan koleksi buku publik dengan filter dan pagination.
+- **UI/UX Modern**  
+  Responsive, clean, dan mudah digunakan.
+- **Pengujian Otomatis**  
+  Unit test & feature test untuk autentikasi dan manajemen buku.
 
-Laravel is accessible, powerful, and provides tools required for large, robust applications.
+---
 
-## Learning Laravel
+## 🚀 Instalasi
 
-Laravel has the most extensive and thorough [documentation](https://laravel.com/docs) and video tutorial library of all modern web application frameworks, making it a breeze to get started with the framework.
+1. **Clone repository**
+   ```bash
+   git clone https://github.com/salimnrkhsn17/projectFAN_fdtest.git
+   cd project_fan
+   ```
 
-You may also try the [Laravel Bootcamp](https://bootcamp.laravel.com), where you will be guided through building a modern Laravel application from scratch.
+2. **Install dependency**
+   ```bash
+   composer install
+   npm install && npm run build	
+   php artisan storage:link (agar foto muncul)
+   ```
 
-If you don't feel like reading, [Laracasts](https://laracasts.com) can help. Laracasts contains thousands of video tutorials on a range of topics including Laravel, modern PHP, unit testing, and JavaScript. Boost your skills by digging into our comprehensive video library.
+3. **Copy file environment**
+   ```bash
+   cp .env.example .env
+   ```
 
-## Laravel Sponsors
+4. **Generate key aplikasi**
+   ```bash
+   php artisan key:generate
+   ```
 
-We would like to extend our thanks to the following sponsors for funding Laravel development. If you are interested in becoming a sponsor, please visit the [Laravel Partners program](https://partners.laravel.com).
+5. **Atur konfigurasi database**  
+   Edit `.env` dan sesuaikan DB_DATABASE, DB_USERNAME, DB_PASSWORD sesuai Database (PostgreSQL).
+   Database name : dbfan_fdtest
 
-### Premium Partners
+   Table :
+   users
+   books
+  bisa langsung jalankan migrate
 
-- **[Vehikl](https://vehikl.com)**
-- **[Tighten Co.](https://tighten.co)**
-- **[Kirschbaum Development Group](https://kirschbaumdevelopment.com)**
-- **[64 Robots](https://64robots.com)**
-- **[Curotec](https://www.curotec.com/services/technologies/laravel)**
-- **[DevSquad](https://devsquad.com/hire-laravel-developers)**
-- **[Redberry](https://redberry.international/laravel-development)**
-- **[Active Logic](https://activelogic.com)**
+6. **Jalankan migrasi dan seeder (opsional)**
+   ```bash
+   php artisan migrate --seed
+   ```
+   Atau jika ingin reset:
+   ```bash
+   php artisan migrate:fresh --seed
+   ```
 
-## Contributing
+7. **Jalankan server lokal**
+   ```bash
+   php artisan serve
+   ```
+   Akses di [http://localhost:8000](http://localhost:8000)
 
-Thank you for considering contributing to the Laravel framework! The contribution guide can be found in the [Laravel documentation](https://laravel.com/docs/contributions).
+---
 
-## Code of Conduct
+## 🛠️ Cara Kerja & Alur
 
-In order to ensure that the Laravel community is welcoming to all, please review and abide by the [Code of Conduct](https://laravel.com/docs/contributions#code-of-conduct).
+1. **Register & Verifikasi Email**
+   - User mendaftar, lalu menerima email verifikasi.
+   - Setelah klik link verifikasi, user bisa login dan akses fitur utama.
 
-## Security Vulnerabilities
+2. **Manajemen Buku**
+   - User login dapat menambah, mengedit, dan menghapus buku.
+   - Buku dapat diberi rating dan thumbnail.
 
-If you discover a security vulnerability within Laravel, please send an e-mail to Taylor Otwell via [taylor@laravel.com](mailto:taylor@laravel.com). All security vulnerabilities will be promptly addressed.
+3. **Landing Page**
+   - Semua pengunjung dapat melihat daftar buku publik.
+   - Fitur filter berdasarkan penulis, rating, dan urutan terbaru.
 
-## License
+4. **Dashboard & Profil**
+   - Setelah login dan verifikasi, user dapat mengelola profil dan password.
 
-The Laravel framework is open-sourced software licensed under the [MIT license](https://opensource.org/licenses/MIT).
+5. **Pengujian Otomatis**
+   - Jalankan `php artisan test` untuk memastikan semua fitur utama berjalan baik.
+
+---
+
+## 🧪 Pengujian
+
+Jalankan semua test:
+```bash
+php artisan test
+```
+Test akan berjalan di database khusus (tidak menghapus data utama).
+
+---
+
+## 📦 Struktur Folder Penting
+
+- `app/Models/Book.php` — Model buku
+- `app/Http/Controllers/BookController.php` — Logika CRUD buku
+- `resources/views/landing.blade.php` — Landing page publik
+- `resources/views/auth/` — Halaman autentikasi
+- `tests/Feature/` — Pengujian fitur utama
+
+---
+
+## 📧 Konfigurasi Email
+
+1. Gunakan Akun Gmail Khusus 
+Karena Gmail punya batasan rate-limit harian (misal 500 email/hari), sebaiknya:
+
+Gunakan akun Gmail yang hanya untuk testing
+
+Atau aktifkan App Passwords jika pakai 2FA
+
+2. Aktifkan 2FA (jika belum) di Gmail
+Buka akun Google
+
+Masuk ke https://myaccount.google.com/security
+
+Aktifkan "2-Step Verification"
+
+3. Buat App Password
+Jika 2FA aktif:
+
+Masuk ke https://myaccount.google.com/apppasswords
+
+Pilih App: Email → Device: Other (Laravel)
+
+Akan diberikan 16-digit password
+
+
+Agar fitur verifikasi email berjalan, atur SMTP di `.env`:
+```
+MAIL_MAILER=smtp
+MAIL_HOST=smtp.mailtrap.io
+MAIL_PORT=587
+MAIL_USERNAME=your_username
+MAIL_PASSWORD=your_password
+MAIL_ENCRYPTION=tls
+
+MAIL_FROM_ADDRESS=your@email.com
+MAIL_FROM_NAME="FANBook"
+```
+
+
