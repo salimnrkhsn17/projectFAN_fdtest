@@ -7,12 +7,13 @@ use App\Http\Controllers\ForgotPasswordController;
 use App\Http\Controllers\ResetPasswordController;
 use App\Http\Controllers\BookController;
 use App\Http\Controllers\UserController;
-use \App\Http\Controllers\ProfilePasswordController;
+use App\Http\Controllers\ProfilePasswordController;
 use App\Http\Controllers\ProfileController;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 use Illuminate\Http\Request;
 use Illuminate\Foundation\Auth\EmailVerificationRequest;
+use App\Models\User;
 
 // Public/Pengunjung
 Route::get('/', [LandingPageController::class, 'index'])->name('landing');
@@ -36,10 +37,19 @@ Route::get('/email/verify', function () {
     return view('auth.verify');
 })->middleware('auth')->name('verification.notice');
 
-Route::get('/email/verify/{id}/{hash}', function (EmailVerificationRequest $request) {
-    $request->fulfill();
+//  Email Verification dengan auto-login jika sudah terautentikasi
+Route::get('/email/verify/{id}/{hash}', function (Request $request) {
+    $user = User::where('id', $request->route('id'))->firstOrFail();
+    if (Auth::check()) {
+        Auth::loginUsingId($user->id);
+    }
+    $verificationRequest = EmailVerificationRequest::createFrom($request);
+    $verificationRequest->setUserResolver(function () use ($user) {
+        return $user;
+    });
+    $verificationRequest->fulfill();
     return redirect('/dashboard');
-})->middleware(['auth', 'signed'])->name('verification.verify');
+})->middleware(['signed'])->name('verification.verify');
 
 Route::post('/email/verification-notification', function (Request $request) {
     $request->user()->sendEmailVerificationNotification();

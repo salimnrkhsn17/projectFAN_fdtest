@@ -12,7 +12,7 @@ class BookController extends Controller
     use AuthorizesRequests;
     public function index()
     {
-        $books = Book::where('user_id', Auth::id())->latest()->paginate(5);
+        $books = Book::where('user_id', Auth::id())->latest()->paginate(4);
         if (request()->ajax()) {
             return view('books.index', compact('books'))->render();
         }

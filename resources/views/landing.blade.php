@@ -34,105 +34,129 @@
             padding: 2rem 1rem;
         }
 
-
-        .hero {
+        /* HERO SECTION STYLES */
+        .hero-modern {
+            position: relative;
             text-align: center;
             margin-bottom: 2rem;
+            overflow: hidden;
+            border-radius: 1rem;
+            box-shadow: var(--shadow);
+        }
+
+        .hero-bg-glass {
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: rgba(255, 255, 255, 0.3);
+            backdrop-filter: blur(10px);
+            z-index: 1;
+            border-radius: 1rem;
+        }
+
+        .hero-content {
             position: relative;
+            padding: 2rem 1rem;
+            z-index: 2;
         }
 
-        .hero-icon {
-            font-size: 2.7rem;
-            color: #06b6d4;
-            margin-bottom: 0.2rem;
-            filter: drop-shadow(0 2px 8px #06b6d455);
+        .hero-icon-svg {
+            margin-bottom: 1rem;
             display: inline-block;
-            animation: hero-pop 0.7s cubic-bezier(.68,-0.55,.27,1.55);
         }
 
-        @keyframes hero-pop {
-            0% { transform: scale(0.7); opacity: 0; }
-            100% { transform: scale(1); opacity: 1; }
-        }
-
-        .hero-title {
-            font-size: 2.7rem;
-            font-weight: 900;
-            background: linear-gradient(90deg, #6366f1 0%, #06b6d4 100%);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            background-clip: text;
-            text-fill-color: transparent;
-            letter-spacing: 1px;
+        .hero-title-modern {
+            font-size: 2.5rem;
+            font-weight: 800;
+            color: #1f2937;
             margin-bottom: 0.5rem;
-            text-shadow: 0 2px 8px #6366f122;
-            display: inline-block;
             position: relative;
-        }
-        .hero-title::after {
-            content: '';
-            display: block;
-            width: 60%;
-            height: 4px;
-            background: linear-gradient(90deg, #06b6d4 0%, #6366f1 100%);
-            border-radius: 2px;
-            margin: 0.3rem auto 0 auto;
-            animation: underline-grow 1s cubic-bezier(.68,-0.55,.27,1.55);
-        }
-        @keyframes underline-grow {
-            0% { width: 0; opacity: 0; }
-            100% { width: 60%; opacity: 1; }
+            display: inline-block;
         }
 
-        .hero-desc {
-            font-size: 1.18rem;
+        .hero-title-modern::after {
+            content: '';
+            position: absolute;
+            width: 100%;
+            height: 4px;
+            bottom: -2px;
+            left: 0;
+            background: linear-gradient(90deg, #6366f1 0%, #06b6d4 100%);
+            border-radius: 2px;
+            animation: underline-slide 0.6s ease-in-out;
+        }
+
+        @keyframes underline-slide {
+            0% { transform: scaleX(0); }
+            100% { transform: scaleX(1); }
+        }
+
+        .hero-desc-modern {
+            font-size: 1.15rem;
             color: #374151;
-            font-weight: 500;
             margin-top: 0.5rem;
-            margin-bottom: 0.2rem;
+            margin-bottom: 1.5rem;
             line-height: 1.7;
             max-width: 600px;
             margin-left: auto;
             margin-right: auto;
             letter-spacing: 0.1px;
         }
-        .hero-desc strong {
+
+        .highlight {
             color: #06b6d4;
-            font-weight: 700;
+            font-weight: 600;
         }
 
-        .filter-form {
+        /* FILTER FORM STYLES */
+        .filter-form-modern {
             background: var(--white);
-            padding: 1rem;
+            padding: 1.5rem;
             border-radius: 1rem;
             display: flex;
             flex-wrap: wrap;
             gap: 1rem;
             justify-content: center;
-            margin-top: 2rem;
+            margin-top: 1rem;
             box-shadow: var(--shadow);
         }
 
-        .filter-form input,
-        .filter-form select {
-            padding: 0.6rem 1rem;
+        .filter-form-modern input,
+        .filter-form-modern select {
+            padding: 0.8rem 1.2rem;
             border: 1px solid #d1d5db;
             border-radius: 0.5rem;
             font-size: 1rem;
-            min-width: 170px;
+            min-width: 180px;
         }
 
-        .filter-form button {
+        .filter-form-modern button {
             background: linear-gradient(to right, var(--primary), var(--secondary));
             color: white;
-            padding: 0.6rem 1.5rem;
+            padding: 0.8rem 1.8rem;
             border: none;
             border-radius: 0.5rem;
             font-weight: 600;
             cursor: pointer;
             transition: background 0.3s;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
         }
 
+        .filter-form-modern button span {
+            font-size: 1.2rem;
+            display: inline-block;
+            transition: transform 0.3s;
+        }
+
+        .filter-form-modern button:hover span {
+            transform: translateX(4px);
+        }
+
+        /* BOOKS GRID AND PAGINATION STYLES (UNCHANGED) */
         .books-grid {
             display: grid;
             grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
@@ -303,17 +327,29 @@
 
 <body>
     <div class="container">
-
-        <div class="hero">
-            <span class="hero-icon">📚</span>
-            <div class="hero-title">Daftar Buku Publik</div>
-            <div class="hero-desc">
-                Telusuri koleksi <strong>buku</strong> yang diunggah pengguna.<br>
-                Gunakan <strong>filter</strong> untuk menyaring berdasarkan <strong>penulis</strong>, <strong>rating</strong>, dan lainnya.
+        <!-- HERO SECTION -->
+        <div class="hero-modern">
+            <div class="hero-bg-glass"></div>
+            <div class="hero-content">
+                <div class="hero-icon-svg">
+                    <svg width="54" height="54" viewBox="0 0 54 54" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <rect x="2" y="8" width="50" height="38" rx="7" fill="#fff" fill-opacity="0.7" stroke="#6366f1" stroke-width="2.5"/>
+                        <rect x="8" y="14" width="38" height="26" rx="4" fill="#6366f1" fill-opacity="0.13"/>
+                        <rect x="14" y="20" width="26" height="14" rx="2" fill="#06b6d4" fill-opacity="0.13"/>
+                        <rect x="20" y="26" width="14" height="2" rx="1" fill="#6366f1"/>
+                        <rect x="20" y="30" width="14" height="2" rx="1" fill="#06b6d4"/>
+                    </svg>
+                </div>
+                <h1 class="hero-title-modern">FANBook - Daftar Buku Publik</h1>
+                <div class="hero-desc-modern">
+                    <span class="highlight">Temukan</span> & <span class="highlight">bagikan</span> koleksi <span class="highlight">buku</span> terbaik dari komunitas.<br>
+                    Gunakan <span class="highlight">filter</span> untuk eksplorasi berdasarkan <span class="highlight">penulis</span>, <span class="highlight">rating</span>, dan lainnya.
+                </div>
             </div>
         </div>
 
-        <form method="GET" class="filter-form">
+        <!-- FILTER FORM -->
+        <form method="GET" class="filter-form-modern">
             <input type="text" name="author" placeholder="Cari Penulis..." value="{{ request('author') }}">
             <select name="rating">
                 <option value="">Semua Rating</option>
@@ -325,7 +361,7 @@
                 <option value="">Urutkan</option>
                 <option value="newest" {{ request('date') == 'newest' ? 'selected' : '' }}>Terbaru</option>
             </select>
-            <button type="submit">Filter</button>
+            <button type="submit"><span>🔍</span> Filter</button>
         </form>
 
         <div class="books-grid">

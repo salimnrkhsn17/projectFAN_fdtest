@@ -8,18 +8,30 @@
             display: flex;
             justify-content: space-between;
             align-items: center;
-            margin-bottom: 2rem;
+            margin-bottom: 2.2rem;
             gap: 1rem;
             flex-wrap: wrap;
         }
-
         .books-title {
-            font-size: 1.6rem;
-            font-weight: 800;
+            font-size: 2.1rem;
+            font-weight: 900;
             color: #22223b;
             letter-spacing: 1px;
+            background: linear-gradient(90deg, #6366f1 0%, #06b6d4 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            text-fill-color: transparent;
+            display: flex;
+            align-items: center;
+            gap: 0.7rem;
         }
-
+        .books-title svg {
+            width: 2.2rem;
+            height: 2.2rem;
+            color: #6366f1;
+            flex-shrink: 0;
+        }
         .books-add-btn {
             display: inline-flex;
             align-items: center;
@@ -27,196 +39,147 @@
             background: linear-gradient(90deg, #6366f1 0%, #06b6d4 100%);
             color: #fff;
             border: none;
-            border-radius: 8px;
-            padding: 0.7rem 1.3rem;
-            font-size: 1.05rem;
-            font-weight: 600;
-            cursor: pointer;
-            text-decoration: none;
-            box-shadow: 0 2px 8px rgba(99, 102, 241, 0.10);
-            transition: background 0.18s;
-        }
-
-        .books-add-btn:hover {
-            background: linear-gradient(90deg, #06b6d4 0%, #6366f1 100%);
-        }
-
-        .books-table-wrap {
-            background: #fff;
-            border-radius: 14px;
-            box-shadow: 0 2px 16px rgba(99, 102, 241, 0.08);
-            padding: 1.2rem 1rem 1.2rem 1rem;
-            overflow-x: auto;
-            border: 1.5px solid #e0e7ff;
-            margin-bottom: 2rem;
-        }
-
-        .books-table {
-            width: 100%;
-            border-collapse: collapse;
-            /* Ganti dari separate → collapse untuk keselarasan garis */
-            font-size: 1.04rem;
-            background: #ffffff;
-            border: 1px solid #e5e7eb;
-            border-radius: 0.5rem;
-            overflow: hidden;
-            /* untuk rounding sudut */
-        }
-
-        .books-table th,
-        .books-table td {
-            padding: 0.85rem 1rem;
-            text-align: left;
-            border-bottom: 1px solid #e5e7eb;
-        }
-
-        .books-table th {
-            background-color: #f1f5f9;
-            color: #4f46e5;
+            border-radius: 10px;
+            padding: 0.8rem 1.5rem;
+            font-size: 1.13rem;
             font-weight: 700;
-            font-size: 1.05rem;
-            letter-spacing: 0.5px;
-            white-space: nowrap;
-            text-transform: capitalize;
-        }
-
-        .books-table tr:hover td {
-            background-color: #f0f4ff;
-            transition: background-color 0.2s ease;
-        }
-
-        .books-table td {
-            color: #1f2937;
-            vertical-align: middle;
-            font-weight: 500;
-        }
-
-        .books-cover-thumb {
-            width: 64px;
-            height: 90px;
-            border-radius: 8px;
-            object-fit: contain;
-            background: #e0e7ff;
-            box-shadow: 0 2px 8px rgba(99, 102, 241, 0.08);
-            border: 1px solid #e5e7eb;
-            display: block;
-            margin: 0 auto;
-        }
-
-        .books-rating-stars {
-            color: #f59e42;
-            font-size: 1.1rem;
-            letter-spacing: 0.1em;
-            vertical-align: middle;
-            display: inline-block;
-        }
-
-        .books-rating-num {
-            color: #64748b;
-            font-size: 0.98rem;
-            margin-left: 0.2em;
-            display: inline-block;
-        }
-
-        .books-actions {
-            display: flex;
-            gap: 0.5rem;
-            align-items: center;
-        }
-
-        .books-action-btn {
-            background: #f1f5f9;
-            border: none;
-            border-radius: 6px;
-            padding: 0.4rem 0.7rem;
-            color: #6366f1;
-            font-size: 1rem;
             cursor: pointer;
-            transition: background 0.15s, color 0.15s;
-            font-weight: 600;
-            display: inline-flex;
-            align-items: center;
-            gap: 0.3rem;
             text-decoration: none;
+            box-shadow: 0 2px 10px rgba(99, 102, 241, 0.13);
+            transition: background 0.18s, box-shadow 0.18s, transform 0.13s;
+            outline: none;
         }
-
-        .books-action-btn:hover {
-            background: #6366f1;
-            color: #fff;
+        .books-add-btn:hover, .books-add-btn:focus {
+            background: linear-gradient(90deg, #06b6d4 0%, #6366f1 100%);
+            box-shadow: 0 4px 18px rgba(99, 102, 241, 0.18);
+            transform: translateY(-2px) scale(1.03);
         }
-
-        .books-action-btn svg {
-            vertical-align: middle;
-            margin-bottom: 2px;
+        .books-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 1.3rem 1.3rem;
+            margin-bottom: 2.5rem;
         }
-
-        .books-success {
-            color: #10b981;
-            background: #d1fae5;
-            border-radius: 8px;
-            padding: 0.7rem 1rem;
-            margin-bottom: 1.2rem;
-            font-size: 1rem;
-            text-align: center;
+        .book-card {
+            background: linear-gradient(135deg, #f8fafc 60%, #e0e7ff 100%);
+            border-radius: 16px;
+            box-shadow: 0 2px 12px rgba(99, 102, 241, 0.10);
+            display: flex;
+            flex-direction: column;
+            align-items: stretch;
+            padding: 1.1rem 1.1rem 1.2rem 1.1rem;
+            transition: box-shadow 0.18s, transform 0.18s;
+            position: relative;
+            min-height: 220px;
+            max-width: 100%;
         }
-
-        @media (max-width: 700px) {
-            .books-header {
-                flex-direction: column;
-                align-items: stretch;
-                gap: 0.7rem;
-            }
-
-            .books-title {
-                font-size: 1.2rem;
-            }
-
-            .books-table th,
-            .books-table td {
-                padding: 0.6rem 0.4rem;
-            }
-
-            .books-table-wrap {
-                padding: 0.7rem 0.2rem;
-            }
+        .book-card:hover {
+            box-shadow: 0 6px 24px rgba(99, 102, 241, 0.16);
+            transform: translateY(-4px) scale(1.025);
         }
-
-        .modal-book-form-blur {
-            position: fixed;
-            top: 0;
-            left: 0;
-            right: 0;
-            bottom: 0;
-            background: rgba(40, 40, 60, 0.25);
-            z-index: 1000;
+        .book-card-row {
+            display: flex;
+            flex-direction: row;
+            gap: 1.1rem;
+            align-items: flex-start;
+        }
+        .book-card-cover {
+            width: 110px;
+            min-width: 110px;
+            height: 160px;
+            background: #e0e7ff;
+            border-radius: 10px;
+            box-shadow: 0 2px 8px rgba(99, 102, 241, 0.10);
+            overflow: hidden;
             display: flex;
             align-items: center;
             justify-content: center;
-            backdrop-filter: blur(2.5px);
-            transition: background 0.2s;
         }
-
-        .modal-book-form-blur>div.books-form-card {
-            box-shadow: 0 8px 32px rgba(99, 102, 241, 0.18);
-            animation: modalPopIn 0.18s cubic-bezier(.4, 2, .6, 1) both;
+        .book-card-img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            border-radius: 10px;
+            background: #e0e7ff;
+            display: block;
         }
-
-        @keyframes modalPopIn {
-            0% {
-                transform: scale(0.95) translateY(30px);
-                opacity: 0;
-            }
-
-            100% {
-                transform: scale(1) translateY(0);
-                opacity: 1;
-            }
+        .book-card-info {
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+            gap: 0.3rem;
+            justify-content: flex-start;
+            min-width: 0;
         }
-
-        body.modal-open {
+        .book-card-title {
+            font-size: 1.08rem;
+            font-weight: 900;
+            color: #22223b;
+            margin-bottom: 0.1rem;
+            line-height: 1.2;
+            word-break: break-word;
+        }
+        .book-card-author {
+            font-size: 0.98rem;
+            color: #6366f1;
+            font-weight: 700;
+            margin-bottom: 0.1rem;
+        }
+        .book-card-rating {
+            margin: 0.2rem 0 0.5rem 0;
+        }
+        .book-card-desc {
+            font-size: 0.97rem;
+            color: #64748b;
+            margin-bottom: 0.2rem;
+            min-height: 2.2em;
+            max-height: 4.2em;
             overflow: hidden;
+            text-overflow: ellipsis;
+            display: -webkit-box;
+            -webkit-line-clamp: 3;
+            -webkit-box-orient: vertical;
         }
-
+        .book-card-actions {
+            display: flex;
+            gap: 0.5rem;
+            margin-top: 1.1rem;
+            justify-content: flex-end;
+        }
+        .books-action-btn {
+            background: linear-gradient(90deg, #6366f1 0%, #06b6d4 100%);
+            color: #fff;
+            border: none;
+            border-radius: 7px;
+            padding: 0.45rem 1.05rem;
+            font-size: 0.98rem;
+            font-weight: 700;
+            cursor: pointer;
+            text-decoration: none;
+            box-shadow: 0 1px 6px rgba(99, 102, 241, 0.10);
+            display: inline-flex;
+            align-items: center;
+            gap: 0.3rem;
+            transition: background 0.15s, color 0.15s, box-shadow 0.15s, transform 0.13s;
+            outline: none;
+            min-width: 80px;
+            justify-content: center;
+        }
+        .books-action-btn svg {
+            margin-bottom: 2px; 
+        }
+        .books-action-btn + .books-action-btn {
+            margin-left: 0 !important;
+        }
+        .books-rating-stars {
+            color: #fbbf24;
+            font-size: 1.18rem;
+            letter-spacing: 0.1em;
+            vertical-align: middle;
+            display: inline-block;
+            filter: drop-shadow(0 1px 2px #fbbf24aa);
+            text-shadow: 0 1px 2px #fbbf24aa;
+        }
         .pagination {
             display: flex;
             justify-content: center;
@@ -227,11 +190,9 @@
             list-style: none;
             flex-wrap: wrap;
         }
-
         .pagination li {
             display: inline-block;
         }
-
         .pagination .page-link,
         .pagination .page-item span {
             display: inline-block;
@@ -250,7 +211,6 @@
             cursor: pointer;
             box-shadow: 0 1px 4px rgba(99, 102, 241, 0.04);
         }
-
         .pagination .page-item.active .page-link,
         .pagination .page-item.active span {
             background: linear-gradient(90deg, #6366f1 0%, #06b6d4 100%);
@@ -259,13 +219,11 @@
             cursor: default;
             box-shadow: 0 2px 8px rgba(99, 102, 241, 0.10);
         }
-
         .pagination .page-link:hover:not(.active),
         .pagination .page-item:not(.active) span:hover {
             background: #e0e7ff;
             color: #22223b;
         }
-
         .pagination .page-item.disabled .page-link,
         .pagination .page-item.disabled span {
             color: #b0b3c6;
@@ -273,32 +231,92 @@
             border-color: #e0e7ff;
             cursor: not-allowed;
         }
-
         .pagination .page-link:focus {
             outline: 2px solid #6366f1;
             outline-offset: 1px;
         }
-
+        @media (max-width: 1200px) {
+            .books-grid {
+                grid-template-columns: repeat(3, 1fr);
+            }
+        }
+        @media (max-width: 900px) {
+            .books-grid {
+                grid-template-columns: 1fr;
+                gap: 1.2rem 0.7rem;
+            }
+            .book-card-row {
+                flex-direction: column;
+                align-items: center;
+                gap: 1rem;
+            }
+            .book-card-cover {
+                width: 90px;
+                min-width: 90px;
+                height: 120px;
+            }
+        }
         @media (max-width: 600px) {
-            .pagination .page-link,
-            .pagination .page-item span {
-                min-width: 28px;
-                padding: 0.35rem 0.6rem;
+            .books-grid {
+                grid-template-columns: 1fr;
+                gap: 0.7rem 0.4rem;
+            }
+            .book-card {
+                min-height: 120px;
+                padding: 0.7rem 0.5rem 0.9rem 0.5rem;
+            }
+            .book-card-cover {
+                width: 70px;
+                min-width: 70px;
+                height: 90px;
+            }
+            .book-card-title {
                 font-size: 0.98rem;
             }
         }
-
-        .main-content {
-            transition: margin-left 0.18s;
+        /* Hide old table style if any left */
+        .books-table, .books-table-wrap { display: none !important; }
+        .modal-book-form-blur {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: rgba(40, 40, 60, 0.25);
+            z-index: 1000;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            backdrop-filter: blur(2.5px);
+            transition: background 0.2s;
         }
-
-        .sidebar.sidebar-collapsed ~ .main-content {
-            margin-left: 64px !important;
+        .modal-book-form-blur>div.books-form-card {
+            box-shadow: 0 8px 32px rgba(99, 102, 241, 0.18);
+            animation: modalPopIn 0.18s cubic-bezier(.4, 2, .6, 1) both;
+        }
+        @keyframes modalPopIn {
+            0% {
+                transform: scale(0.95) translateY(30px);
+                opacity: 0;
+            }
+            100% {
+                transform: scale(1) translateY(0);
+                opacity: 1;
+            }
+        }
+        body.modal-open {
+            overflow: hidden;
         }
     </style>
 
     <div class="books-header">
-        <div class="books-title">Daftar Buku Saya</div>
+        <div class="books-title">
+            <svg width="32" height="32" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                <rect x="3" y="6" width="18" height="12" rx="3" fill="#e0e7ff"/>
+                <rect x="7" y="10" width="10" height="4" rx="1" fill="#6366f1" fill-opacity="0.13"/>
+            </svg>
+            Daftar Buku Saya
+        </div>
         <a href="{{ route('books.create') }}" class="books-add-btn" id="btn-add-book">
             <svg width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
                 <circle cx="12" cy="12" r="10" />
@@ -308,89 +326,76 @@
             Tambah Buku
         </a>
     </div>
+    <div style="font-size:1.05rem;color:#64748b;margin-bottom:1.2rem;margin-top:-1.1rem;max-width:600px;">
+        Semua buku yang kamu upload akan tampil di sini. Kelola koleksi bukumu dengan mudah!
+    </div>
 
     @if(session('success'))
         <div class="books-success">{{ session('success') }}</div>
     @endif
 
-    <div class="books-table-wrap" id="books-table-wrap">
-        <table class="books-table">
-            <thead>
-                <tr>
-                    <th>Judul</th>
-                    <th>Penulis</th>
-                    <th>Deskripsi</th>
-                    <th>Rating</th>
-                    <th>Cover</th>
-                    <th>Aksi</th>
-                </tr>
-            </thead>
-            <tbody>
-                @forelse($books as $book)
-                    <tr>
-                        <td>{{ $book->title }}</td>
-                        <td>{{ $book->author }}</td>
-                        <td style="max-width:220px; white-space:pre-line; overflow:hidden; text-overflow:ellipsis;">
-                            {{ Str::limit($book->description, 120) }}
-                        </td>
-                        <td>
-                            <span class="books-rating-stars">
-                                @for ($star = 1; $star <= 5; $star++)
-                                    @if ($star <= $book->rating)
-                                        &#9733;
-                                    @else
-                                        <span style="color:#e5e7eb;">&#9733;</span>
-                                    @endif
-                                @endfor
-                            </span>
-                            <span class="books-rating-num">({{ $book->rating }})</span>
-                        </td>
-                        <td>
+    <div class="books-grid-wrap">
+        <div class="books-grid" id="books-grid">
+            @forelse($books as $book)
+                <div class="book-card">
+                    <div class="book-card-row">
+                        <div class="book-card-cover">
                             @if($book->thumbnail)
-                                <img src="{{ asset('storage/' . $book->thumbnail) }}" alt="cover" class="books-cover-thumb">
+                                <img src="{{ asset('storage/' . $book->thumbnail) }}" alt="cover" class="book-card-img">
                             @else
-                                -
+                                <div class="book-card-img book-card-img-placeholder">No Cover</div>
                             @endif
-                        </td>
-                        <td>
-                            <div class="books-actions">
-                                @can('update', $book)
-                                    <a href="{{ route('books.edit', $book) }}" class="books-action-btn" title="Edit">
-                                        <svg width="16" height="16" fill="none" stroke="currentColor" stroke-width="2"
-                                            viewBox="0 0 24 24">
-                                            <path
-                                                d="M15.232 5.232l3.536 3.536M9 13l6.586-6.586a2 2 0 1 1 2.828 2.828L11.828 15.828a2 2 0 0 1-2.828 0L9 13z" />
-                                            <path d="M16 7l1 1" />
-                                        </svg>
-                                        Edit
-                                    </a>
-                                @endcan
-                                @can('delete', $book)
-                                    <form action="{{ route('books.destroy', $book) }}" method="POST" style="display:inline;">
-                                        @csrf
-                                        @method('DELETE')
-                                        <button type="submit" class="books-action-btn"
-                                            onclick="return confirm('Yakin hapus buku ini?')" title="Hapus">
-                                            <svg width="16" height="16" fill="none" stroke="currentColor" stroke-width="2"
-                                                viewBox="0 0 24 24">
-                                                <polyline points="3 6 5 6 21 6" />
-                                                <path
-                                                    d="M19 6v14a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V6m5 0V4a2 2 0 0 1 2-2h0a2 2 0 0 1 2 2v2" />
-                                            </svg>
-                                            Hapus
-                                        </button>
-                                    </form>
-                                @endcan
+                        </div>
+                        <div class="book-card-info">
+                            <div class="book-card-title">{{ $book->title }}</div>
+                            <div class="book-card-author">{{ $book->author }}</div>
+                            <div class="book-card-rating">
+                                <span class="books-rating-stars">
+                                    @for ($star = 1; $star <= 5; $star++)
+                                        @if ($star <= $book->rating)
+                                            &#9733;
+                                        @else
+                                            <span style="color:#e5e7eb;">&#9733;</span>
+                                        @endif
+                                    @endfor
+                                </span>
+                                <span class="books-rating-num">({{ $book->rating }})</span>
                             </div>
-                        </td>
-                    </tr>
-                @empty
-                    <tr>
-                        <td colspan="6" style="text-align:center;color:#64748b;">Belum ada buku.</td>
-                    </tr>
-                @endforelse
-            </tbody>
-        </table>
+                            <div class="book-card-desc">{{ Str::limit($book->description, 120) }}</div>
+                        </div>
+                    </div>
+                    <div class="book-card-actions">
+                        @can('update', $book)
+                            <a href="{{ route('books.edit', $book) }}" class="books-action-btn" title="Edit">
+                                <svg width="16" height="16" fill="none" stroke="currentColor" stroke-width="2"
+                                    viewBox="0 0 24 24">
+                                    <path d="M15.232 5.232l3.536 3.536M9 13l6.586-6.586a2 2 0 1 1 2.828 2.828L11.828 15.828a2 2 0 0 1-2.828 0L9 13z" />
+                                    <path d="M16 7l1 1" />
+                                </svg>
+                                Edit
+                            </a>
+                        @endcan
+                        @can('delete', $book)
+                            <form action="{{ route('books.destroy', $book) }}" method="POST" style="display:inline;">
+                                @csrf
+                                @method('DELETE')
+                                <button type="submit" class="books-action-btn"
+                                    onclick="return confirm('Yakin hapus buku ini?')" title="Hapus">
+                                    <svg width="16" height="16" fill="none" stroke="currentColor" stroke-width="2"
+                                        viewBox="0 0 24 24">
+                                        <polyline points="3 6 5 6 21 6" />
+                                        <path d="M19 6v14a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V6m5 0V4a2 2 0 0 1 2-2h0a2 2 0 0 1 2 2v2" />
+                                    </svg>
+                                    Hapus
+                                </button>
+                            </form>
+                        @endcan
+                    </div>
+                </div>
+            @empty
+                <div class="book-card book-card-empty">Belum ada buku.</div>
+            @endforelse
+        </div>
     </div>
     <div id="books-pagination" style="margin-top: 20px;">
         <nav aria-label="Books pagination">
@@ -439,7 +444,7 @@
                 .then(openModal);
         });
         // Edit & delete button event delegation
-        document.getElementById('books-table-wrap').addEventListener('click', function(e) {
+        document.getElementById('books-grid').addEventListener('click', function(e) {
             if(e.target.closest('.books-action-btn[title="Edit"]')) {
                 e.preventDefault();
                 let link = e.target.closest('a');
@@ -473,15 +478,14 @@
         document.body.addEventListener('keydown', function(e) {
             if(e.key === 'Escape') closeModal();
         });
-        // Reload books table
+        // Reload books grid
         function reloadBooks() {
             fetch(window.location.href, {headers: {'X-Requested-With': 'XMLHttpRequest'}})
                 .then(res => res.text())
                 .then(html => {
                     let parser = new DOMParser();
                     let doc = parser.parseFromString(html, 'text/html');
-                    document.getElementById('books-table-wrap').innerHTML = doc.getElementById('books-table-wrap').innerHTML;
-                    document.getElementById('books-pagination').innerHTML = doc.getElementById('books-pagination').innerHTML;
+                    document.getElementById('books-grid').innerHTML = doc.getElementById('books-grid').innerHTML;
                     closeModal();
                 });
         }
